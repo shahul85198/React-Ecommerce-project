@@ -43,3 +43,9 @@
          @tailwind components;
          @tailwind utilities;
   
+  ## Authentication 
+  - (APIs) <--> Backend
+  - third party
+
+  -data -> firebase (user authentication / database)
+  - supabse

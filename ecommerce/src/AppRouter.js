@@ -4,14 +4,13 @@ import { Switch, Route} from 'react-router-dom'
 import Home from './components/Home'
 import ProductList from './components/ProductList'
 import ProductDetails from './components/ProductDetails'
-import Login from './components/Login'
-import Signup from './components/Signup'
+import AuthenticationView from './components/AuthenticationView'
 
 export default function AppRouter({children}) {
     return <Switch>
         <Route exact path='/' component = {Home} />
-        <Route path='/login' component = {Login} />
-        <Route path='/signup' component = {Signup} />
+        <Route path='/login' render={(routerprops) => <AuthenticationView {...routerprops} isLogin />} />
+        <Route path='/signup' render={(routerprops) => <AuthenticationView {...routerprops}  />} />
 
         <Route exact path='/products' component={ProductList} />
         <Route  path='/products/:id' component={ProductDetails} />
@@ -21,6 +20,19 @@ export default function AppRouter({children}) {
         */}
         </Switch>
 }
+
+/*
+  manam ela ina pass cheochu 
+ <Route path='/login' render={(routerprops) => <AuthenticationView {...routerprops} isLogin={true} />} />
+        <Route path='/signup' render={(routerprops) => <AuthenticationView {...routerprops} isLogin={false} />} />
+
+        lekapoty ila ina pass cheaivachu
+         <Route path='/login' render={(routerprops) => <AuthenticationView {...routerprops} isLogin />} />
+        <Route path='/signup' render={(routerprops) => <AuthenticationView {...routerprops} />} />
+
+
+*/
+
 
 /*
 
