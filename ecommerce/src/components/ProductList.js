@@ -1,7 +1,10 @@
 import React from 'react'
 import ProductCard from './ProductCard'
+import { useappcontext } from '../contexts/AppProvider'
 
-export default function ProductList({products}) {
+export default function ProductList() {
+  const {products} = useappcontext()
+
   console.log(":: productslist -> products ::", products)
   return (
     <div>
@@ -12,6 +15,23 @@ export default function ProductList({products}) {
       </div>
   )
 }
+
+
+/*
+ temp1.filter((products) => products.id == 2)
+ //output -- {}
+
+ manam item ni pickup chaiyali anty 
+
+ var product =temp1.filter((product) => product.id == 2)
+ // output -- 1st item of product
+
+manam vaka value kosam ity find apply chaivachu if we use filter multiple values read chese avakasam untundi
+
+ temp1.find((products) => products.id == 2)
+
+*/
+
 
 
 /*
