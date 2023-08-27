@@ -27,3 +27,8 @@
 - search and filter
 
 
+## React Snippet
+`rfc` - React Functional Componet
+`rcc` - React class component
+
+
