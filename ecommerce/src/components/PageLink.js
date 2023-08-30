@@ -10,7 +10,3 @@ function PageLink({children, ...props}) {
 }
 
 export default PageLink
-
-/*
-it is used for styling
-*/

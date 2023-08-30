@@ -14,6 +14,7 @@ const AppContext = createContext({
 function AppProvider({children}) {
   const [products, setproducts] = useState([])
   const [loading, setloading] = useState(true)
+  const [cartitems, setcartitems] = useState([])
 
   useEffect(() =>{
       fetch(API_ENDPOINTS.PRODUCTS)
@@ -24,12 +25,18 @@ function AppProvider({children}) {
       })
   }, [])
 
+  const addToCart = (Product) => {
+    setcartitems([...cartitems, Product])
+  } 
+
   return (
     
     <AppContext.Provider value={({
       products,
       loading,
-      setloading
+      setloading,
+      cartitems,
+      addToCart
     })}>
 
       {children}
@@ -41,6 +48,7 @@ function AppProvider({children}) {
  export const useappcontext = () => useContext(AppContext)
 
 export default AppProvider
+
 
 
 /*

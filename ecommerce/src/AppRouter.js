@@ -5,6 +5,8 @@ import Home from './components/Home'
 import ProductList from './components/ProductList'
 import ProductDetails from './components/ProductDetails'
 import AuthenticationView from './components/AuthenticationView'
+import Cart from './components/Cart'
+import Logout from './components/Logout'
 
 export default function AppRouter({children}) {
     return <Switch>
@@ -14,6 +16,8 @@ export default function AppRouter({children}) {
 
         <Route exact path='/products' component={ProductList} />
         <Route  path='/products/:id' component={ProductDetails} />
+        <Route path='/cart' component={Cart} />
+        <Route path="/logout" component={Logout} />
 
         {/* <Route exact path='/products' render={routerProps => <ProductList {...routerProps} />}/>
         <Route  path='/products/:id'  render={routerprops => <ProductDetails {...routerprops} />} />
