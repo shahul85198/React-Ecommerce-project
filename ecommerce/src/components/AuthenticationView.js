@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useUser } from '../contexts/UserProvider';
+import UITextField from './UITextField';
+import UIButton from './UIButton';
 //import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
 //import  {firebaseapp}  from '../firebaseapp'
 
@@ -59,30 +61,60 @@ function AuthenticationView({isLogin}) {
    }, [isLogin]) // work has componentDidUpdate (invoke whenever islogin prop change)
 
   return (
-    <form onSubmit={handleAuthentication} >
-      <h2>{title}</h2>
-      {error && <div className='text-red-500 p-2 m-2'>{error}</div>}
+    <form onSubmit={handleAuthentication} 
+   className='bg-slate-100 rounded shadow max-w-xs mx-auto mt-5' >
+      <h2 className='bg-slate-500 text-white px-3 py-4 text-center rounded-t'>{title}</h2>
+      {error && <div className='text-red-700 bg-red-200 text-center text-xs border-b-2 border-red-700'>{error}</div>}
+      <div className='p-5'>
 
      {/* <div className='text-red-500 p-2 m-2'>{isLoginFailed && 'Invalid Login'}</div> */}
      {/* <div className='text-red-500 p-2 m-2'>{noUserLogin && 'User not founnd'}</div>  */}
 
-      <input 
+      <UITextField 
       type='email'
        placeholder='Email' 
        value={email}
        onChange={e => setemail(e.target.value)}
-       className='border-solid border-2 border-gray-600 m-3'/>
+       />
      
-      <input
+      <UITextField
        type='password' 
        placeholder='Password'
        value={password}
        onChange={e => setpassword(e.target.value)}
-        className='border-solid border-2 border-gray-600 m-3' />
+        />
     
-     <button className='bg-gray-600 text-white px-4 rounded m-3'>{title}</button>
+     <UIButton>{title}</UIButton>
+    </div>
     </form>
   )
 }
 
 export default AuthenticationView;
+
+
+
+/*
+  vaka object lo inko object ni include chaiyali anty
+
+  var obj = {a:1, b:2}
+  var secondobj = {c:3,d:4,a:obj.a,b:obj.b}
+
+  secondobj
+
+  output--> {c:3, d:4, a:1, b:2}
+
+*/
+
+
+/*
+  inko laga ela rayali anty
+
+  var obj = {a:1, b:2}
+  var secondobj = {c:3,d:4, ...obj}
+
+   secondobj
+
+  output--> {c:3, d:4, a:1, b:2}
+
+*/
