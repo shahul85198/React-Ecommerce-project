@@ -12,9 +12,9 @@ export default function ProductCard({product}) {
          <h3>{product.title} {product.id}</h3>
          <p>{product.price}</p>
         
-         <button 
+       {/*  <button 
          onClick={() => addToCart(product)}
-         className='bg-slate-700 text-white px-2 rounded ml-2'>addtoCart</button>
+  className='bg-slate-700 text-white px-2 rounded ml-2'>addtoCart</button> */}
         
       </Link>
    

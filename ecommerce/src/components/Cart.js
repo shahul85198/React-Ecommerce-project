@@ -1,9 +1,10 @@
+
+
+/* 
+
 import React from 'react'
 import { useappcontext } from '../contexts/AppProvider'
 import { Link } from 'react-router-dom'
-
-
-
 function Cart() {
 
     const { cartitems} = useappcontext();
@@ -27,4 +28,4 @@ function Cart() {
 export default Cart;
 
 
-
+*/

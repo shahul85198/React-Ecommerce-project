@@ -13,7 +13,7 @@ function PageHeader() {
 
         <nav className='flex gap-3'>
      <PageLink  to='/products'>Products</PageLink>
-     <PageLink to='/cart'>Cart</PageLink>
+     {/*<PageLink to='/cart'>Cart</PageLink>*/}
      
      {user ? <div>{user.email} <PageLink  to='/logout'>Logout</PageLink></div> : <>
      <PageLink  to='/login'>Login</PageLink>

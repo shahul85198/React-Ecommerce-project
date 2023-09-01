@@ -14,7 +14,7 @@ const AppContext = createContext({
 function AppProvider({children}) {
   const [products, setproducts] = useState([])
   const [loading, setloading] = useState(true)
-  const [cartitems, setcartitems] = useState([])
+  // const [cartitems, setcartitems] = useState([])
 
   useEffect(() =>{
       fetch(API_ENDPOINTS.PRODUCTS)
@@ -25,9 +25,9 @@ function AppProvider({children}) {
       })
   }, [])
 
-  const addToCart = (Product) => {
+ /* const addToCart = (Product) => {
     setcartitems([...cartitems, Product])
-  } 
+  } */
 
   return (
     
@@ -35,8 +35,8 @@ function AppProvider({children}) {
       products,
       loading,
       setloading,
-      cartitems,
-      addToCart
+     // cartitems,
+     // addToCart
     })}>
 
       {children}
