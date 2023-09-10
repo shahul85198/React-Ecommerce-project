@@ -6,7 +6,7 @@ to avoide prop drilling we use context
 import React, {createContext, useContext, useEffect, useState} from 'react'
 import { API_ENDPOINTS } from '../Constants'
 
-const AppContext = createContext({
+export const AppContext = createContext({
     products: [],
     loading: true
 })
@@ -14,7 +14,11 @@ const AppContext = createContext({
 function AppProvider({children}) {
   const [products, setproducts] = useState([])
   const [loading, setloading] = useState(true)
+  //const [cartitems, setcartitems] = useState([])
+  const [cartProducts, setCartProduct] = useState({})
   // const [cartitems, setcartitems] = useState([])
+
+
 
   useEffect(() =>{
       fetch(API_ENDPOINTS.PRODUCTS)
@@ -25,16 +29,53 @@ function AppProvider({children}) {
       })
   }, [])
 
+  const addProductToCart = (product) => {
+   /* let addedProduct = cartitems.find(cartProduct => cartProduct.id == product.id)
+
+    if(!addedProduct) {
+      addedProduct = product
+      addedProduct.quantity = 1;
+    } else {
+      addedProduct.quantity++;
+      }
+      const filterproducts = cartitems.filter(cartProduct => cartProduct.id != product.id)
+    setcartitems([...filterproducts, addedProduct])
+  */
+
+  let cartProduct = cartProducts[product.id]
+  if(!cartProduct) {
+    cartProduct = product
+    cartProduct.quantity = 1;
+  } else {
+    cartProduct.quantity++
+  }
+  setCartProduct({...cartProducts, [product.id] : cartProduct})
+  }
+
  /* const addToCart = (Product) => {
     setcartitems([...cartitems, Product])
   } */
+
+
+   const productById = {}
+   products.forEach((product) => {
+    productById[product.id] = product;
+   })
+
+
+    const cartCount = Object.keys(cartProducts)
 
   return (
     
     <AppContext.Provider value={({
       products,
+      productById,
       loading,
       setloading,
+      cartCount,
+     // cartitems,     // [{id: 1}, {id: 2}]
+      cartProducts,  // {1: {id:1}, 2: {id:2}}
+      addProductToCart
      // cartitems,
      // addToCart
     })}>

@@ -7,6 +7,7 @@ import ProductDetails from './components/ProductDetails'
 import AuthenticationView from './components/AuthenticationView'
 // import Cart from './components/Cart'
 import Logout from './components/Logout'
+import CartDetails from './components/CartDetails'
 
 export default function AppRouter({children}) {
     return <Switch>
@@ -18,7 +19,7 @@ export default function AppRouter({children}) {
         <Route  path='/products/:id' component={ProductDetails} />
        {/*} <Route path='/cart' component={Cart} /> */}
         <Route path="/logout" component={Logout} />
-
+        <Route path='/cart' component={CartDetails} />
         {/* <Route exact path='/products' render={routerProps => <ProductList {...routerProps} />}/>
         <Route  path='/products/:id'  render={routerprops => <ProductDetails {...routerprops} />} />
         */}
