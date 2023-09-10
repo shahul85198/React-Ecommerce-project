@@ -49,6 +49,9 @@ function AppProvider({children}) {
   } else {
     cartProduct.quantity++
   }
+
+  cartProduct.totalPrice = cartProduct.quantity * cartProduct.price;
+
   setCartProduct({...cartProducts, [product.id] : cartProduct})
   }
 
@@ -62,8 +65,12 @@ function AppProvider({children}) {
     productById[product.id] = product;
    })
 
-
-    const cartCount = Object.keys(cartProducts)
+    const allcartProducts = Object.values(cartProducts)
+    const cartCount = allcartProducts.length;
+    let totalCartAmount = 0;
+    allcartProducts.forEach(product => {
+      totalCartAmount = totalCartAmount + product.totalPrice
+    })
 
   return (
     
@@ -75,7 +82,9 @@ function AppProvider({children}) {
       cartCount,
      // cartitems,     // [{id: 1}, {id: 2}]
       cartProducts,  // {1: {id:1}, 2: {id:2}}
-      addProductToCart
+      addProductToCart,
+      allcartProducts,
+      totalCartAmount
      // cartitems,
      // addToCart
     })}>

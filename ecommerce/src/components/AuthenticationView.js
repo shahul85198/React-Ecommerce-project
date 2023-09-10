@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useUser } from '../contexts/UserProvider';
 import UITextField from './UITextField';
 import UIButton from './UIButton';
+import { useHistory, Redirect } from 'react-router-dom'
 //import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
 //import  {firebaseapp}  from '../firebaseapp'
 
@@ -12,8 +13,9 @@ function AuthenticationView({isLogin}) {
   //const [isLoginFailed, setisLoginFailed] = useState(false); // if we provide ! (knot) to false it will change into true
   //const [noUserLogin, setNoUserLogin] = useState(false)
   const title = isLogin ? 'Login' : 'Sign'
+  const history = useHistory();
   
-  const { doLogin, doSignup, error, clearErrors} = useUser()
+  const { doLogin, doSignup, error, clearErrors, user} = useUser()
 
   const handleAuthentication = (event) => {
     // const formData = {
@@ -59,6 +61,15 @@ function AuthenticationView({isLogin}) {
    useEffect(() => {
      clearErrors()
    }, [isLogin]) // work has componentDidUpdate (invoke whenever islogin prop change)
+ /*
+    useEffect(() => {
+      if(user) {
+        history.push('/')
+      }
+    }, [user])
+     */
+
+    if(user) return <Redirect to="/" />
 
   return (
     <form onSubmit={handleAuthentication} 

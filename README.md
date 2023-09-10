@@ -103,7 +103,12 @@ var productByTitle = {}
 
 product.forEach(product => productByTitle[product.title] = product.price)
 
+## localstorage 
+- manam login ina tarvata manam a browser lo newtabe or new window open chesina mana information untundi
 
+## sessionStorage
+
+- mana information manam login iyyi kanaunty aapudu manam vere tab kani new window kani open chesty mana information undadu
 
 
 
