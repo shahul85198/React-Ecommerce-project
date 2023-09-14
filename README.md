@@ -110,7 +110,12 @@ product.forEach(product => productByTitle[product.title] = product.price)
 
 - mana information manam login iyyi kanaunty aapudu manam vere tab kani new window kani open chesty mana information undadu
 
+## New work space
 
+- mana vaka project ni clone cheskoni vere work-space ki velamu anty akada node modules miss avutai
+- node modules should install
+- npm install
+- dependencies ni install chestundi
 
 
 
