@@ -23,6 +23,9 @@ export default function AppRouter({children}) {
         {/* <Route exact path='/products' render={routerProps => <ProductList {...routerProps} />}/>
         <Route  path='/products/:id'  render={routerprops => <ProductDetails {...routerprops} />} />
         */}
+
+        <Route path='/checkout' component={Checkout} />
+
         </Switch>
 }
 

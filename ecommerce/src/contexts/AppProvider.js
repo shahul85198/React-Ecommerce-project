@@ -11,16 +11,20 @@ export const AppContext = createContext({
     loading: true
 })
 
+const CART_PRODUCTS = "CART_PRODUCTS";
+const localCartItems = localStorage.getItem(CART_PRODUCTS);
+const parseLocalCartItems = JSON.parse(localCartItems ? localCartItems : "{}")
+
+
 function AppProvider({children}) {
   const [products, setproducts] = useState([])
   const [loading, setloading] = useState(true)
   //const [cartitems, setcartitems] = useState([])
-  const [cartProducts, setCartProduct] = useState({})
+  const [cartProducts, setCartProduct] = useState({parseLocalCartItems})
   // const [cartitems, setcartitems] = useState([])
 
 
-
-  useEffect(() =>{
+  useEffect(() => {
       fetch(API_ENDPOINTS.PRODUCTS)
       .then(res => res.json())
       .then(res => {
@@ -54,6 +58,10 @@ function AppProvider({children}) {
 
   setCartProduct({...cartProducts, [product.id] : cartProduct})
   }
+
+  useEffect(() => {
+    localStorage.setItem(CART_PRODUCTS, JSON.stringify(cartProducts));
+  }, [cartProducts])
 
  /* const addToCart = (Product) => {
     setcartitems([...cartitems, Product])
