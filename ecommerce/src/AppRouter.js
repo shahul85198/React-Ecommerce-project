@@ -8,8 +8,11 @@ import AuthenticationView from './components/AuthenticationView'
 // import Cart from './components/Cart'
 import Logout from './components/Logout'
 import CartDetails from './components/CartDetails'
+import Checkout from './components/Checkout'
 
-export default function AppRouter({children}) {
+
+
+export default function AppRouter( {children} ) {
     return <Switch>
         <Route exact path='/' component = {Home} />
         <Route path='/login' render={(routerprops) => <AuthenticationView {...routerprops} isLogin />} />
