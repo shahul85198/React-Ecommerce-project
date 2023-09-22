@@ -9,6 +9,26 @@ import AuthenticationView from './components/AuthenticationView'
 import Logout from './components/Logout'
 import CartDetails from './components/CartDetails'
 import Checkout from './components/Checkout'
+import OrderHistory from './components/OrderHistory'
+import { useUser } from './contexts/UserProvider'
+import { Redirect } from 'react-router-dom'
+
+function authRoute(ComponentView) {
+    return () => {
+        const {user} = useUser();
+        return user ? <ComponentView /> : <Redirect to="login" />
+
+    }
+    
+}
+
+
+/*
+authRoute(Checkout) => () => {
+    return <Checkout />
+}
+*/
+//authRoute(Checkout) -> () => <ComponentView />
 
 
 
@@ -27,9 +47,10 @@ export default function AppRouter( {children} ) {
         <Route  path='/products/:id'  render={routerprops => <ProductDetails {...routerprops} />} />
         */}
 
-        <Route path='/checkout' component={Checkout} />
-
-        </Switch>
+        <Route path='/checkout' component={authRoute(Checkout)} />   {/* () => <Checkout />*/}
+        <Route path="/history" component={authRoute(OrderHistory)}/>  {/* () => <OrderHistory /> */}
+        <Route path="/" component={() => <div>TEST PAGE</div>} />
+    </Switch>
 }
 
 /*
