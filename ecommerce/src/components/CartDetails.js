@@ -18,6 +18,7 @@ export class CartDetails extends Component {
       <section className='container mx auto py-4'>
     
 <h2 className='text-2xl font-semibold mb-4'>Cart Details</h2>
+
 <AppContext.Consumer>
   {({allcartProducts,totalCartAmount}) => {
 
