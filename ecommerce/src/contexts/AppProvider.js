@@ -33,7 +33,7 @@ function AppProvider({children}) {
       })
   }, [])
 
-  const addProductToCart = (product) => {
+  
    /* let addedProduct = cartitems.find(cartProduct => cartProduct.id == product.id)
 
     if(!addedProduct) {
@@ -46,6 +46,7 @@ function AppProvider({children}) {
     setcartitems([...filterproducts, addedProduct])
   */
 
+    const addProductToCart = (product) => {
   let cartProduct = cartProducts[product.id]
   if(!cartProduct) {
     cartProduct = product
@@ -67,6 +68,10 @@ function AppProvider({children}) {
     setcartitems([...cartitems, Product])
   } */
 
+
+  const clearCart = () => {
+    setCartProduct({})
+  }
 
    const productById = {}
    products.forEach((product) => {
@@ -90,6 +95,7 @@ function AppProvider({children}) {
       cartCount,
      // cartitems,     // [{id: 1}, {id: 2}]
       cartProducts,  // {1: {id:1}, 2: {id:2}}
+      clearCart,
       addProductToCart,
       allcartProducts,
       totalCartAmount
@@ -103,7 +109,7 @@ function AppProvider({children}) {
   )
 }
 
- export const useappcontext = () => useContext(AppContext)
+ export const useappcontext = () => useContext(AppContext);
 
 export default AppProvider
 

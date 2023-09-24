@@ -3,22 +3,18 @@ import React, { Component } from 'react'
 import {AppContext} from '../contexts/AppProvider'
 import UIButton from './UIButton';
 import { CardItem } from './CardItem';
+import PageLayout from './PageLayout';
+
 
 export class CartDetails extends Component {
-
   gotoCheckout = () => {
     this.props.history.push('/checkout')
   }
 
-
   render() {
     console.log(":: CartDetails ::", this.props)
     return (
-     
-      <section className='container mx auto py-4'>
-    
-<h2 className='text-2xl font-semibold mb-4'>Cart Details</h2>
-
+       <PageLayout title={'Cart Details'}>
 <AppContext.Consumer>
   {({allcartProducts,totalCartAmount}) => {
 
@@ -29,7 +25,8 @@ export class CartDetails extends Component {
       </div> : <p>your cart is empty.</p>
   }}
 </AppContext.Consumer>
- </section>
+</PageLayout>
+ 
 
 )
 }

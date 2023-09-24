@@ -5,6 +5,8 @@ import UIButton from './UIButton';
 import {useappcontext} from '../contexts/AppProvider';
 import { database } from '../firebaseapp';
 import { collection, addDoc } from "firebase/firestore";
+import { useHistory } from 'react-router-dom';
+import PageLayout from './PageLayout';
 
 //import { useUser } from '../contexts/UserProvider';
 //import { useHistory, Redirect } from 'react-router-dom';
@@ -28,7 +30,8 @@ export default function Checkout() {
 */
 
       const {user} = useUser();
-      const {allcartProducts, totalCartAmount} = useappcontext();
+      const history = useHistory()
+      const {allcartProducts, totalCartAmount, clearCart} = useappcontext();
       const [address, setAddress] = useState('')
       const handleSubmit = (e) => {
         e.preventDefault();
@@ -50,6 +53,7 @@ export default function Checkout() {
           address,
           products,
           totalAmount: totalCartAmount,
+          createdAt:(new Date()).toLocaleString()
         }
 
         addDoc(
@@ -57,6 +61,8 @@ export default function Checkout() {
           saveOrder
           ).then((docRef) => {
             console.log(":: orderHistory -> save ::", docRef)
+            clearCart()
+            history.push('/products')
           })
           .catch(error => {
             console.log(":: orderHistory -> ERROR ::", error)
@@ -65,14 +71,14 @@ export default function Checkout() {
           console.log(":: Checkout -> handleSubmit -> saveOrder ::", saveOrder)
       }
 
-    return <div className='container mx-auto px-4 py-6'>
-      <h2 className='text-2xl font-semibold mb-4'>Checkout</h2>
+    return <PageLayout title={'Checkout'}>
       <form onSubmit={handleSubmit}>
         <UITextField placeholder='Email' value={user.email} readOnlys/>
        <UITextField placeholder='Address' value={address} onChange={e => setAddress(e.target.value)} />
        <UIButton disabled={!address || address.length < 10}>Submit</UIButton>
       </form>
-    </div>
+      </PageLayout>
+    
 }
 
 
