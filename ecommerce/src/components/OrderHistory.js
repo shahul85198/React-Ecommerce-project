@@ -17,9 +17,9 @@ function OrderHistory() {
       const ordersInDB = [];
       dbCollection.forEach((document) => {
         var orderData = document.data();
-        dbCollection.push(orderData)
+        dbCollection.push({...orderData, id: document.id})
       });
-      setOrders(ordersInDB)
+      setOrders(ordersInDB);
       setIsLoading(false)
     })
      //.catch(console.log)
@@ -29,6 +29,22 @@ function OrderHistory() {
   return (
     <PageLayout title={isLoading ? 'Fetching orders...' : `Order History (${orders.length})`}>
 
+<section>
+  {orders.map((order, idx) => <div key={order.id} className='mb-8 pb-8 border-b-2'>
+        <h3 className='text-lg font-semibold mb-2'>Order #{idx + 1} </h3>
+        <ul>
+           {order.products.map((product, productIdx) => <li key={productIdx} className='mb-2 pl-4'>
+            {product.title} - {product.quantity} × 
+           </li>)}
+        </ul>
+        <p className='text-gray-700 mt-2 text-sm'>
+           Shipping Address: {order.address}
+        </p>
+        <p className='text-gray-700 mt-2'>
+          Order Date: {order.createdAt}
+        </p>
+  </div>)}
+</section>
     </PageLayout>
   )
 }

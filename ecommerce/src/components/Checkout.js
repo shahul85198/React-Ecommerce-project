@@ -61,7 +61,7 @@ export default function Checkout() {
           saveOrder
           ).then((docRef) => {
             console.log(":: orderHistory -> save ::", docRef)
-            clearCart()
+            clearCart();
             history.push('/products')
           })
           .catch(error => {
@@ -73,7 +73,7 @@ export default function Checkout() {
 
     return <PageLayout title={'Checkout'}>
       <form onSubmit={handleSubmit}>
-        <UITextField placeholder='Email' value={user.email} readOnlys/>
+        <UITextField placeholder='Email' value={user.email} readOnly />
        <UITextField placeholder='Address' value={address} onChange={e => setAddress(e.target.value)} />
        <UIButton disabled={!address || address.length < 10}>Submit</UIButton>
       </form>
