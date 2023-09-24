@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useUser } from 'react'
+import React, { useEffect, useState } from 'react'
 import {collection, getDocs, query, orderBy, where} from 'firebase/firestore'
 import {database} from '../firebaseapp'
 import PageLayout from './PageLayout'
-//import { useUser } from '../contexts/UserProvider'
+import { useUser } from '../contexts/UserProvider'
 //import { Redirect } from 'react-router-dom';
 
 function OrderHistory() {
@@ -26,9 +26,10 @@ function OrderHistory() {
       const ordersInDB = [];
       dbCollection.forEach((document) => {
         var orderData = document.data();
-        dbCollection.push({...orderData, id: document.id})
+        ordersInDB.push({...orderData, id: document.id})
       });
       setOrders(ordersInDB) //.sort((a,b) => a.createdAt > b.createdAt ? -1 : 1)
+      console.log(ordersInDB)
       setIsLoading(false)
     })
      //.catch(console.log)
@@ -43,7 +44,7 @@ function OrderHistory() {
         <h3 className='text-lg font-semibold mb-2'>Order #{idx + 1} | INR {order.totalAmount} </h3>
         <ul>
            {order.products.map((product, productIdx) => <li key={productIdx} className='mb-2 pl-4'>
-            {product.title} - {product.quantity} × 
+            {product.title} - {product.quantity} x
            </li>)}
         </ul>
         <p className='text-gray-700 mt-2 text-sm'>

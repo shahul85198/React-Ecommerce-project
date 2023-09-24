@@ -49,7 +49,7 @@ export default function AppRouter( {children} ) {
 
         <Route path='/checkout' component={authRoute(Checkout)} />   {/* () => <Checkout />*/}
         <Route path="/history" component={authRoute(OrderHistory)}/>  {/* () => <OrderHistory /> */}
-        <Route path="/" component={() => <div>TEST PAGE</div>} />
+        <Route path="/test" component={() => <div>TEST PAGE</div>} />
     </Switch>
 }
 

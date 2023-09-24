@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import {AppContext} from '../contexts/AppProvider'
 import UIButton from './UIButton';
-import { CardItem } from './CardItem';
+import { CartItem } from './CartItem';
 import PageLayout from './PageLayout';
 
 
@@ -16,10 +16,10 @@ export class CartDetails extends Component {
     return (
        <PageLayout title={'Cart Details'}>
 <AppContext.Consumer>
-  {({allcartProducts,totalCartAmount}) => {
+  {({allcartProducts, totalCartAmount}) => {
 
     return allcartProducts.length > 0 ?  <div>
-       {allcartProducts.map((product) => <CardItem key={product.id} product={product} />)}
+       {allcartProducts.map((product) => <CartItem key={product.id} product={product} />)}
         <h3 className='text-lg font-semibold mt-4'>Total price: {totalCartAmount} </h3>
         <UIButton onClick={this.gotoCheckout}>Proceed to checkout</UIButton>
       </div> : <p>your cart is empty.</p>

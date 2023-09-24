@@ -109,7 +109,7 @@ function AppProvider({children}) {
   )
 }
 
- export const useappcontext = () => useContext(AppContext);
+ export const useAppContext = () => useContext(AppContext);
 
 export default AppProvider
 

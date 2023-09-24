@@ -1,9 +1,9 @@
 import React from 'react'
 import ProductCard from './ProductCard'
-import { useappcontext } from '../contexts/AppProvider'
+import { useAppContext } from '../contexts/AppProvider'
 
 export default function ProductList() {
-  const {products} = useappcontext()
+  const {products} = useAppContext()
 
   /*
   const addtoCart = (product) => {

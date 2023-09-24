@@ -1,5 +1,5 @@
 import React from 'react'
-import { useappcontext } from '../contexts/AppProvider';
+import { useAppContext } from '../contexts/AppProvider';
 //import ProductCard from './ProductCard';
 import UIButton from './UIButton'
 
@@ -7,7 +7,7 @@ export default function ProductDetails({match, ...props}) {
   const {params} = match;
   const {id} = params;
 
-  const {productById, addProductToCart, cartProducts} = useappcontext()
+  const {productById, addProductToCart, cartProducts} = useAppContext()
   //const product = products.find(prod => prod.id == id)
    const product = productById[id];
    const cartProductInfo = cartProducts[id]

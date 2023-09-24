@@ -2,7 +2,7 @@ import React, { useState }  from 'react';
 import { useUser } from '../contexts/UserProvider';
 import UITextField from './UITextField';
 import UIButton from './UIButton';
-import {useappcontext} from '../contexts/AppProvider';
+import {useAppContext} from '../contexts/AppProvider';
 import { database } from '../firebaseapp';
 import { collection, addDoc } from "firebase/firestore";
 import { useHistory } from 'react-router-dom';
@@ -31,7 +31,7 @@ export default function Checkout() {
 
       const {user} = useUser();
       const history = useHistory()
-      const {allcartProducts, totalCartAmount, clearCart} = useappcontext();
+      const {allcartProducts, totalCartAmount, clearCart} = useAppContext();
       const [address, setAddress] = useState('')
       const handleSubmit = (e) => {
         e.preventDefault();

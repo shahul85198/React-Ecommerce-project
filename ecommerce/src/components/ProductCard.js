@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { useappcontext } from '../contexts/AppProvider'
+import { useAppContext } from '../contexts/AppProvider'
 
 export default function ProductCard({product}) {
 
-   const {addToCart} = useappcontext()
+   const {addToCart} = useAppContext()
 
   return (
     <Link to={`/products/${product.id}`} className='product-card'>
